@@ -13,9 +13,8 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 public class ConfigurationForTiles {
     @Bean
     public TilesConfigurer tilesConfigurer() {
-        System.out.println("inside tiles configuration");
         final TilesConfigurer configurer = new TilesConfigurer();
-        configurer.setDefinitions(new String[] { "WEB-INF/tiles/tiles.xml" });
+        configurer.setDefinitions(new String[] { "/WEB-INF/tiles/tiles.xml" });
         configurer.setCheckRefresh(true);
         return configurer;
     }
@@ -23,6 +22,7 @@ public class ConfigurationForTiles {
     @Bean
     public TilesViewResolver tilesViewResolver() {
         final TilesViewResolver resolver = new TilesViewResolver();
+        //resolver.setPrefix("/WEB-INF/tiles/pages");
         resolver.setViewClass(TilesView.class);
         return resolver;
     }
