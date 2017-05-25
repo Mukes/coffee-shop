@@ -1,0 +1,23 @@
+.login{
+    background-color: #E0E0E0;
+    border: 1px solid grey;
+    border-radius: 8% 0;
+    margin-top: 20%;
+    padding: 10%;
+}
+.signup{
+    background-color: #E0E0E0;
+    border: 1px solid grey;
+    border-radius: 8% 0;
+    margin: 5% 0;
+    padding: 10%;
+}
+.titleH{
+    text-align: center;
+    font-size: 22px;
+}
+.error{
+    color: red;
+    text-align: center;
+    font-size: 14px;
+}

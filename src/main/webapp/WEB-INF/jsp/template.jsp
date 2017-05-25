@@ -11,6 +11,8 @@
     <link rel="icon" href="image/coffee.jpg"/>
     <link href="css/style.css" rel="stylesheet"/>
 
+    <%--CSS can be dynamically loaded using Apache tiles--%>
+    <link href="css/login.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <tiles:insertAttribute name="header"/>

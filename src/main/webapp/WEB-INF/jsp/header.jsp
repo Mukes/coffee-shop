@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse bg-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
@@ -22,16 +22,16 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">User
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Add user</a></li>
-                        <li><a href="#">List User</a></li>
+                        <li><a href="/signup">Add user</a></li>
+                        <li><a href="/list-user">List User</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Product
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Add Product</a></li>
-                        <li><a href="#">List Product</a></li>
+                        <li><a href="/product-add">Add Product</a></li>
+                        <li><a href="/product-list">List Product</a></li>
                     </ul>
                 </li>
                 <li><a href="/myposts">Order</a></li>
@@ -44,15 +44,15 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">${loggedUser}
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<c:url value="/profile"/>">Profile</a></li>
+                                <li><a href="/update-person?id=${loggedUser.id}">Profile</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="<c:url value="/logout"/>">Logout</a></li>
+                                <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </c:otherwise>
                 </c:choose>
             </ul>

@@ -1,5 +1,10 @@
 package com.coffeeshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
 	private long id;
 	private String firstName;
@@ -9,13 +14,19 @@ public class Person {
 	private String phone;
 	private boolean enable;
 	private String password;
+	private String rePassword;
 	private Role role;
 
 	public Person(){
 
 	}
 
-	public Person(Long id){
+    public Person(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public Person(Long id){
 		this.id = id;
 	}
 
@@ -86,4 +97,28 @@ public class Person {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            ", address=" + address +
+            ", phone='" + phone + '\'' +
+            ", enable=" + enable +
+            ", password='" + password + '\'' +
+            ", rePassword='" + rePassword + '\'' +
+            ", role=" + role +
+            '}';
+    }
 }
