@@ -1,5 +1,6 @@
 body {
-    background-image:  url('../image/background.png');
+    /*background-image:  url('../image/background.png');*/
+    background: gainsboro;
 }
 .clearfix{
     clear: both;

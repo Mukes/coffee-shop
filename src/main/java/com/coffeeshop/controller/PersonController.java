@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionAttributeStore;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
 
@@ -30,21 +33,31 @@ public class PersonController {
         return "signup";
     }
 
-    @PostMapping({"/signup", "/update-person"})
-    public String addUser(Person person, Address address, @RequestParam(value="id", required = false) Long id,  Model model){
-        System.out.println("id"+id);
+    @PostMapping({"/signup"})
+    public String addUser(Person person, Address address, Model model){
+        System.out.println("person:"+person);
+        System.out.println("address:"+address);
         person.setAddress(address);
         if (!person.getPassword().equals(person.getRePassword())){
             model.addAttribute("errorMsg", "Password Confirmation didnt matched");
             model.addAttribute("person", person);
             return "signup";
         }else {
-            if (id!=null)
-                personService.update(new Person(id));
-            else
+            if (person.getId()!=0){
+                personService.update(person);
+            }
+            else{
+                System.out.println("Adding user person");
                 personService.addPerson(person);
-            return "list-user";
+            }
+            return "redirect:/list-user";
         }
+    }
+
+    @PostMapping({"/add_person"})
+    public String addPerson(Person person){
+        personService.addPerson(person);
+        return "redirect:/list-user";
     }
 
     @GetMapping({"/login"})
@@ -55,9 +68,10 @@ public class PersonController {
     @PostMapping({"/login"})
     public String login(String email, String password, Model model){
         Person person = personService.login(new Person(email, password));
+        System.out.println("person:"+person);
         if (person!=null){
             model.addAttribute("loggedUser", person);
-            return "home";
+            return "redirect:/product-list";
         }else {
             model.addAttribute("errorMsg", "Username or password is incorrect.");
             return "login";
@@ -65,9 +79,10 @@ public class PersonController {
     }
 
     @GetMapping({"/logout"})
-    public String logout(Model model){
-        model.addAttribute("loggedUser", null);
-        return "home";
+    public String logout(Model model, SessionStatus status){
+        status.setComplete();
+        //store.cleanupAttribute(request, "loggedUser");
+        return "redirect:/product-list";
     }
 
     @GetMapping({"/list-user"})

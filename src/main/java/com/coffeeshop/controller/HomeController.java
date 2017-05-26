@@ -9,7 +9,7 @@ public class HomeController {
 	
 	@GetMapping({"/", "/index", "/home"})
 	public String homePage(Model model) {
-		return "home";
+		return "redirect:/product-list";
 	}
 
 	@GetMapping({"/secure"})

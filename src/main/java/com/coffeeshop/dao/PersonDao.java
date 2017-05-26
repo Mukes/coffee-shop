@@ -19,6 +19,7 @@ public class PersonDao extends AbstractDao<Person>{
     }
 
     public Person add(Person person){
+        System.out.println("posting user");
         return post(person, null);
     }
 

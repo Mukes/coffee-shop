@@ -57,6 +57,7 @@ public class AbstractDao<T> {
             restTemplate.exchange(url,
                 HttpMethod.GET, null, new ParameterizedTypeReference<List<T>>() {
                 });
+        System.out.println("List:"+response.getBody());
         return response.getBody();
     }
     

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form method="post" action="/signup" class="signup">
+            <form method="post" action="/add_person" class="signup">
                 <div class="titleH">
                     <c:choose>
                         <c:when test="${loggedUser ne null}">
@@ -14,18 +14,15 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
+
                 <div class="error">${errorMsg}</div>
-                <div class="error">
-                    <c:forEach items="${errors}" var="error">
-                        ${error.message}<br/>
-                       <%-- <ce:showMessage color="red" text="${error.message}"/>--%>
-                    </c:forEach>
-                </div>
+
+                <input type="hidden" name="id" id="id" value="${person.id}"/>
+
                 <div class="form-group">
                     <label for="firstName">First Name</label>
                     <input type="text" name="firstName" id="firstName" value="${person.firstName}" required="required"
                            class="form-control"/>
-                    <input type="hidden" name="id" id="userId" value="${person.id}"/>
                 </div>
 
                 <div class="form-group">
@@ -42,7 +39,7 @@
 
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="phone" name="phone" id="phone" value="${person.phone}" required="required"
+                    <input type="text" name="phone" id="phone" value="${person.phone}" required="required"
                            class="form-control"/>
                 </div>
 
@@ -64,9 +61,10 @@
                 <div class="checkbox">
                     <input type="checkbox" name="enable" id="enable" value="${person.enable}"/>
                 </div>
+
                     </div>
 
-                <div class="form-group">
+               <%-- <div class="form-group">
                     <label for="state">State</label>
                     <input type="text" name="state" id="state" value="${person.address.state}" required="required"
                            class="form-control"/>
@@ -86,7 +84,7 @@
                     <input type="number" name="zipcode" id="zipCode" value="${person.address.zipcode}" required="required"
                            class="form-control" minlength="5" maxlength="5"/>
                 </div>
-                <hr/>
+                <hr/>--%>
 
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -98,8 +96,9 @@
                     <input type="password" name="rePassword" id="rePassword" required="required" class="form-control"/>
                 </div>
                 <hr/>
-                <a class="btn btn-default" href="login">Back</a>
-                <button class="btn btn-primary pull-right" type="submit"><c:choose>
+
+                <button class="btn btn-primary pull-right" type="submit">
+                    <c:choose>
                     <c:when test="${loggedUser ne null}">
                         Update Profile
                     </c:when>

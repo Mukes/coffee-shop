@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Product {
 
 	private int id;
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private String productName;
 	private String description;
 	private double price;
@@ -64,5 +69,6 @@ public class Product {
 	public int getId() {
 		return id;
 	}
+
 
 }

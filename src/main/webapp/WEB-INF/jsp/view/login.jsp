@@ -6,7 +6,7 @@
                 <div class="error">${errorMsg}</div>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" required="required" class="form-control"/>
+                    <input type="text" name="email" id="username" required="required" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -18,7 +18,7 @@
                 <button class="btn btn-primary pull-right" type="submit">Login</button>
                 <div class="clearfix">
                     <hr/>
-                    New To Carpool? <a href="/signup">Sign Up</a> Now
+                    New To Coffee Shop? <a href="/signup">Sign Up</a> Now
                 </div>
             </form>
 
